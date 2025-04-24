@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link as="font" href="assets/SwedbankHeadline-Black.woff2" rel="preload" type="font/woff2">
+    <link as="font" href="assets/SwedbankHeadline-Bold.woff2" rel="preload" type="font/woff2">
+    <link as="font" href="assets/Roboto-Regular.woff2" rel="preload" type="font/woff2">
+    <script src="index.js" defer></script>
+    <title>Autoliisingu taotlus</title>
+</head>
+<body>
+    <main>
+        <h1>Autoliisingu taotlus</h1>
+        <section>
+            <form>
+                <div class="form-content">
+                    <div id="page-intro" class="page">
+                        <h2>Sinu uus auto võib olla samm jätkusuutlikuma elustiili poole</h2>
+                        <ul>
+                            <li>Liising on hea lahendus, kui plaanid osta uue auto.</li>
+                            <li>Kõik on lihtne ja mugav – taotlusest sõiduki kättesaamiseni.</li>
+                            <li>Taotluse täitmine võtab vaid mõne minuti.</li>
+                        </ul>
+                    </div>
+                    <div class="page">
+                        <label class="page-label">Sõiduki tüüp</label>
+                        <div class="page-controls">
+                            <fieldset id="vehicle-types-set"
+                                      role="radiogroup"
+                                      aria-invalid="false"
+                                      aria-label="Nõutud sõiduki tüüp"
+                                      aria-errormessage="vehicle-type-error">
+                                <legend>Sõiduki tüüp</legend>
+                                <input id="type-car" name="type-radio" type="radio" class="vehicle-type" value="Auto">
+                                <label for="type-car">Auto</label>
+                                <input id="type-bike" name="type-radio" type="radio" class="vehicle-type" value="Mootorratas">
+                                <label for="type-bike">Mootorratas</label>
+                                <input id="type-other" name="type-radio" type="radio" class="vehicle-type" value="Muu">
+                                <label for="type-other">Muu</label>
+                            </fieldset>
+                        </div>
+                        <div id="vehicle-type-error" class="error-message" role="alert"></div>
+                    </div>
+                    <div class="page">
+                        <label for="vehicle-price" class="page-label">Sõiduki hind</label>
+                        <div class="page-controls">
+                            <input id="vehicle-price" name="amount" type="number" min="10000"
+                                   aria-invalid="false"
+                                   aria-errormessage="vehicle-price-error"
+                                   aria-required="true"
+                                   aria-description="Liisingu puhul on minimaalne finantseeritav auto hind 11200 eurot.
+                                    Väiksema summa laenamiseks soovitame Autolaenu.">
+                            <label for="vehicle-price">EUR</label>
+                        </div>
+                        <div id="vehicle-price-error" class="error-message" role="alert"></div>
+                    </div>
+                    <div class="page">
+                        <div>
+                            <label for="loan-period" class="page-label">Laenu periood</label>
+                            <div class="tooltip-container">
+                                <button type="button" class="tooltip-btn" id="tooltip-loan_btn"
+                                        aria-describedby="tooltip-loan"
+                                        aria-label="Laenuperioodi tingimused">
+                                    <strong>?</strong>
+                                </button>
+                                <div id="tooltip-loan" class="tooltip" role="tooltip">
+                                    <p class="hidden">Laenuperioodi tingimused:</p>
+                                    <p>
+                                        Lepingu lõppedes ei tohi sõiduk olla vanem kui 15 aastat. Laenuperiood on kuni 7 aastat (84 kuud) kapitalirendi puhul ja kuni 5 aastat (60 kuud) kasutusrendi puhul.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-controls">
+                            <select id="loan-period"
+                                    name="loan-period"
+                                    aria-invalid="false"
+                                    aria-required="true"
+                                    aria-errormessage="loan-period-error" aria-describedby="tooltip-loan">
+                                <option value disabled selected></option>
+                                <option value="1">1 aasta</option>
+                                <option value="2">2 aastat</option>
+                                <option value="3">3 aastat</option>
+                                <option value="4">4 aastat</option>
+                                <option value="5">5 aastat</option>
+                                <option value="6">6 aastat</option>
+                                <option value="7">7 aastat</option>
+                            </select>
+                        </div>
+                        <div id="loan-period-error" class="error-message" role="alert"></div>
+                    </div>
+                    <div class="page">
+                        <label class="page-label">Haridus</label>
+                        <div class="page-controls">
+                            <fieldset id="education-set"
+                                      role="group"
+                                      aria-label="Nõutud haridus"
+                                      aria-invalid="false"
+                                      aria-errormessage="education-error">
+                                <legend>Haridus</legend>
+                                <input id="education-basic" name="education-basic" type="checkbox" class="checkbox-education" value="Põhiharidus">
+                                <label for="education-basic">Põhiharidus</label>
+                                <input id="education-secondary" name="education-secondary" type="checkbox" class="checkbox-education" value="Keskharidus">
+                                <label for="education-secondary">Keskharidus</label>
+                                <input id="education-higher" name="education-higher" type="checkbox" class="checkbox-education" value="Kõrgharidus">
+                                <label for="education-higher">Kõrgharidus</label>
+                            </fieldset>
+                        </div>
+                        <div id="education-error" class="error-message" role="alert"></div>
+                    </div>
+                    <div class="page">
+                        <label class="page-label" for="financing">Omafinantseeringu päritolu</label>
+                        <div class="page-controls">
+                            <textarea id="financing" name="financing" rows="4" cols="40"></textarea>
+                        </div>
+                        <div id="financing-error" class="error-message" role="alert"></div>
+                    </div>
+                    <div class="page" id="page-summary">
+                        <h4>Ülevaade</h4>
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <th class="info-table-label" scope="row">Sõiduki tüüp</th>
+                                    <td class="info-table-content" id="info-table-vehicle-type"></td>
+                                </tr>
+                                <tr>
+                                    <th class="info-table-label" scope="row">Sõiduki hind</th>
+                                    <td class="info-table-content" id="info-table-vehicle-price"></td>
+                                </tr>
+                                <tr>
+                                    <th class="info-table-label" scope="row">Liisinguperiood</th>
+                                    <td class="info-table-content" id="info-table-loan-period"></td>
+                                </tr>
+                                <tr>
+                                    <th class="info-table-label" scope="row">Haridus</th>
+                                    <td class="info-table-content" id="info-table-education"></td>
+                                </tr>
+                                <tr>
+                                    <th class="info-table-label" scope="row">Omafinantseeringu päritolu</th>
+                                    <td class="info-table-content" id="info-table-financing"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-navigation">
+                    <button id="button-previous" class="button" type="button" disabled tabindex="2">Tagasi</button>
+                    <button id="button-next" class="button" type="button">Edasi</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
